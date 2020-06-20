@@ -1,8 +1,10 @@
 {
   "name": "New browsers",
+  "description": "What if browsers looked different?",
   "author": "Kalli",
   "version": "1.0",
   "main": "main.js",
+  "repository": "",
   "devDependencies": {
     "electron": "1.4.15"
   }
