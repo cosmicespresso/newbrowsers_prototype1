@@ -1,0 +1,88 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: transparent;
+}
+
+button,
+input {
+  outline: none;
+}
+
+button,
+input[type="submit"],
+button[disabled]:hover {
+  border: solid 1px transparent;
+  background: transparent;
+  color: #fff;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  border-color: #ccc;
+  /*background: -webkit-linear-gradient(bottom, #cccccc 0%, #f2f2f2 99%);*/
+}
+
+button:active,
+input[type="submit"]:active {
+  border-color: #bbb;
+  /*background: -webkit-linear-gradient(bottom, #e2e2e2 0%, #bbbbbb 99%);*/
+}
+
+/* These glyphs are on the small side, make them look more natural when
+compared to the back/forward buttons */
+#controls #home,
+#controls #terminate {
+  font-size: 18px;
+  color: #fff;
+}
+
+
+#controls {
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 8px 5px;
+  position: absolute;
+}
+
+#controls button,
+#controls input {
+  font-size: 12px;
+  line-height: 24px;
+  padding: 0 4px;
+}
+
+#controls input {
+  border-radius: 12px;
+  width: 80vw;
+  margin-left: 2vw;
+  padding-left: 10px;
+}
+
+#controls #reload {
+  font-size: 18px;
+  color: #fff;
+}
+
+#location {
+  border: solid 1px #ccc;
+  padding: 4px;
+  -webkit-box-sizing: border-box;
+  color: rgba(0,0,0,0.5);
+}
+
+
+/* The reload button turns into a spinning trobber */
+.loading #reload {
+  -webkit-animation: spinner-animation .5s infinite linear;
+  -webkit-transform-origin: 50% 55.5%;
+}
+
+@-webkit-keyframes spinner-animation {
+  0% { -webkit-transform: rotate(0deg); }
+  100% {-webkit-transform: rotate(360deg); }
+}
+

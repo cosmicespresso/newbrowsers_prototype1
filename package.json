@@ -1,0 +1,9 @@
+{
+  "name": "New browsers",
+  "author": "Kalli",
+  "version": "1.0",
+  "main": "main.js",
+  "devDependencies": {
+    "electron": "1.4.15"
+  }
+}
