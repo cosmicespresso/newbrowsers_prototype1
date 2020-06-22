@@ -6,6 +6,11 @@
   "main": "main.js",
   "repository": "",
   "devDependencies": {
-    "electron": "1.4.15"
+    "electron": "^9.0.4"
+  },
+  "build": "electron-packager . -all",
+  "dependencies": {
+    "electron": "^9.0.4",
+    "electron-packager": "^14.2.1"
   }
 }

@@ -2,8 +2,6 @@
 
 What if browsers looked different?
 
-Run `electron .` to compile and enjoy browsing!
-
-Built with `electron v8.0.1`.
+Run `electron .` to compile and `electron-packager browser/ new_browser --platform=darwin` to package.
 
 ![screenshot](screenshot.png)
