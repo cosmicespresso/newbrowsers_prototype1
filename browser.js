@@ -87,10 +87,22 @@ const doLayout = () => {
   let webviewWidth = windowWidth;
   let webviewHeight = windowHeight - controlsHeight;
 
-  controls.style.top = webviewHeight+ 'px'
+  controls.style.top = webviewHeight + 'px'
   webview.style.width = webviewWidth + 'px';
   webview.style.height = webviewHeight + 'px';
   webview.style.offsetTop = 0 + 'px';
+
+  document.querySelector('.controls').addEventListener('mouseenter', (e) => {
+    e.preventDefault();
+    e.target.classList.add('show');
+    webview.style.height = webviewHeight + 'px';
+  })  
+  
+  document.querySelector('.controls').addEventListener('mouseleave', (e) => {
+    e.preventDefault();
+    e.target.classList.remove('show');
+    webview.style.height = webviewHeight + controlsHeight + 'px';
+  })
 }
 
 const handleExit = (event) => {

@@ -23,6 +23,11 @@ body {
   padding: 6px 5px;
   position: absolute;
   width: 98%;
+  opacity: 0;
+}
+
+.show {
+  opacity: 1;
 }
 
 .controls > * {
