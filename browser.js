@@ -1,22 +1,32 @@
-window.onresize = doLayout;
-var isLoading = false;
+let isLoading = false;
 
-onload = function() {
+onload = () => {
 
-  var webview = document.querySelector('webview');
+  let webview = document.querySelector('webview');
+
+  // **********************************
+  // *
+  // Render elements
+  // *
+  // **********************************
   doLayout();
 
-  document.querySelector('#back').onclick = function() {
+  // **********************************
+  // *
+  // Event listeners for buttons and address bar
+  // *
+  // **********************************
+  document.querySelector('#back').onclick = () => {
     webview.goBack();
     console.log('back')
   };
 
-  document.querySelector('#forward').onclick = function() {
+  document.querySelector('#forward').onclick = () => {
     webview.goForward();
     console.log('forward')
   };
 
-  document.querySelector('#reload').onclick = function() {
+  document.querySelector('#reload').onclick = () => {
     console.log('reload')
     if (isLoading) {
       webview.stop();
@@ -27,16 +37,23 @@ onload = function() {
 
   document.querySelector('#reload').addEventListener(
     'webkitAnimationIteration',
-    function() {
+    () => {
       if (!isLoading) {
         document.body.classList.remove('loading');
       }
     });
 
-  document.querySelector('#location-form').onsubmit = function(e) {
+  document.querySelector('#location-form').onsubmit = (e) => {
     e.preventDefault();
     navigateTo(document.querySelector('#location').value);
   };
+
+
+  // **********************************
+  // *
+  // Webview
+  // *
+  // **********************************
 
   webview.addEventListener('close', handleExit);
   webview.addEventListener('did-start-loading', handleLoadStart);
@@ -45,23 +62,31 @@ onload = function() {
   webview.addEventListener('did-get-redirect-request', handleLoadRedirect);
   webview.addEventListener('did-finish-load', handleLoadCommit);
 
+  window.onresize = doLayout;
 };
 
-function navigateTo(url) {
+
+// **********************************
+// *
+// Helper functions
+// *
+// **********************************
+
+const navigateTo = (url) => {
   resetExitedState();
   console.log(url)
-  document.querySelector('webview').src = `https://www.${url}`;
+  document.querySelector('webview').src = `https://${url}`;
   document.querySelector('#location').value = '';
 }
 
-function doLayout() {
-  var webview = document.querySelector('webview');
-  var controls = document.querySelector('#controls');
-  var controlsHeight = controls.offsetHeight;
-  var windowWidth = document.documentElement.clientWidth;
-  var windowHeight = document.documentElement.clientHeight;
-  var webviewWidth = windowWidth;
-  var webviewHeight = windowHeight - controlsHeight;
+const doLayout = () => {
+  let webview = document.querySelector('webview');
+  let controls = document.querySelector('.controls');
+  let controlsHeight = controls.offsetHeight;
+  let windowWidth = document.documentElement.clientWidth;
+  let windowHeight = document.documentElement.clientHeight;
+  let webviewWidth = windowWidth;
+  let webviewHeight = windowHeight - controlsHeight;
 
   controls.style.top = webviewHeight+ 'px'
   webview.style.width = webviewWidth + 'px';
@@ -69,7 +94,7 @@ function doLayout() {
   webview.style.offsetTop = 0 + 'px';
 }
 
-function handleExit(event) {
+const handleExit = (event) => {
   console.log(event.type);
   document.body.classList.add('exited');
   if (event.type == 'abnormal') {
@@ -79,21 +104,21 @@ function handleExit(event) {
   }
 }
 
-function resetExitedState() {
+const resetExitedState = () => {
   document.body.classList.remove('exited');
   document.body.classList.remove('crashed');
   document.body.classList.remove('killed');
 }
 
-function handleLoadCommit() {
+const handleLoadCommit = () => {
   resetExitedState();
-  var webview = document.querySelector('webview');
+  let webview = document.querySelector('webview');
   document.querySelector('#location').value = webview.getURL();
   document.querySelector('#back').disabled = !webview.canGoBack();
   document.querySelector('#forward').disabled = !webview.canGoForward();
 }
 
-function handleLoadStart(event) {
+const handleLoadStart = (event) =>{
   document.body.classList.add('loading');
   isLoading = true;
 
@@ -105,20 +130,20 @@ function handleLoadStart(event) {
   document.querySelector('#location').value = event.url;
 }
 
-function handleLoadStop(event) {
-  // We don't remove the loading class immediately, instead we let the animation
-  // finish, so that the spinner doesn't jerkily reset back to the 0 position.
+const handleLoadStop = (event) => {
   isLoading = false;
 }
 
-function handleLoadAbort(event) {
+const handleLoadAbort = (event) => {
   console.log('LoadAbort');
   console.log('  url: ' + event.url);
   console.log('  isTopLevel: ' + event.isTopLevel);
   console.log('  type: ' + event.type);
 }
 
-function handleLoadRedirect(event) {
+const handleLoadRedirect = (event) => {
   resetExitedState();
   document.querySelector('#location').value = event.newUrl;
 }
+
+

@@ -13,8 +13,8 @@ app.on('ready', function() {
 	  transparent: false, 
 	  frame: false,
 	  useContentSize: true,
-	  alwaysOnTop: true,
-	  vibrancy: 'ultra-dark',
+	  alwaysOnTop: false,
+	  vibrancy: 'hud',
 	  webPreferences: {
 	    nodeIntegration: true,
 	    devTools: true,

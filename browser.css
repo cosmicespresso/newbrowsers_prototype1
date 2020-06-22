@@ -1,88 +1,78 @@
+
+
 body {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   background-color: transparent;
 }
 
-button,
-input {
-  outline: none;
+
+/*--------------------------*/
+/*--------------------------*/
+/*Controls*/
+/*--------------------------*/
+/*--------------------------*/
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: space-around;
+  flex-wrap: nowrap;
+  padding: 6px 5px;
+  position: absolute;
+  width: 98%;
 }
 
-button,
-input[type="submit"],
-button[disabled]:hover {
+.controls button {
+  font-size: 12px;
+  line-height: 12px;
+  padding: 0 4px;
+  outline: none;
   border: solid 1px transparent;
   background: transparent;
   color: #fff;
 }
 
-button:hover,
-input[type="submit"]:hover {
-  border-color: #ccc;
-  /*background: -webkit-linear-gradient(bottom, #cccccc 0%, #f2f2f2 99%);*/
-}
 
-button:active,
-input[type="submit"]:active {
-  border-color: #bbb;
-  /*background: -webkit-linear-gradient(bottom, #e2e2e2 0%, #bbbbbb 99%);*/
-}
-
-/* These glyphs are on the small side, make them look more natural when
-compared to the back/forward buttons */
-#controls #home,
-#controls #terminate {
-  font-size: 18px;
-  color: #fff;
-}
-
-
-#controls {
-  display: -webkit-flex;
-  -webkit-flex-direction: row;
-  justify-content: flex-end;
-  align-items: flex-start;
-  padding: 8px 5px;
-  position: absolute;
-}
-
-#controls button,
-#controls input {
-  font-size: 12px;
-  line-height: 24px;
-  padding: 0 4px;
-}
-
-#controls input {
-  border-radius: 12px;
-  width: 80vw;
-  margin-left: 2vw;
-  padding-left: 10px;
-}
-
-#controls #reload {
-  font-size: 18px;
-  color: #fff;
-}
-
-#location {
-  border: solid 1px #ccc;
-  padding: 4px;
-  -webkit-box-sizing: border-box;
+.controls button:hover {
+  cursor: pointer;
   color: rgba(0,0,0,0.5);
 }
 
-
-/* The reload button turns into a spinning trobber */
 .loading #reload {
-  -webkit-animation: spinner-animation .5s infinite linear;
-  -webkit-transform-origin: 50% 55.5%;
+  animation: pulse-animation 1.5s infinite ease-in-out;
 }
 
-@-webkit-keyframes spinner-animation {
-  0% { -webkit-transform: rotate(0deg); }
-  100% {-webkit-transform: rotate(360deg); }
+@keyframes pulse-animation {
+  0% { transform: scale(1); }
+  25% {transform: scale(1.4); }
+  50% {transform: scale(1); }
+  75% {transform: scale(0.7); }
+  100% {transform: scale(1); }
+}
+
+
+/*--------------------------*/
+/*--------------------------*/
+/*Address bar*/
+/*--------------------------*/
+/*--------------------------*/
+
+.controls input {
+  border-radius: 5px;
+  width: 50vw;
+  margin-left: 2vw;
+  color: #fff;
+  padding: 4px;
+  padding-left: 5px;
+  border: 1px solid;
+  background: transparent;
+  box-sizing: border-box;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.03rem;
+  /*outline: none;*/
 }
 
