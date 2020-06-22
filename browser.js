@@ -76,7 +76,6 @@ const navigateTo = (url) => {
   resetExitedState();
   console.log(url)
   document.querySelector('webview').src = `https://${url}`;
-  document.querySelector('#location').value = '';
 }
 
 const doLayout = () => {
@@ -143,6 +142,7 @@ const handleLoadAbort = (event) => {
 
 const handleLoadRedirect = (event) => {
   resetExitedState();
+  console.log(event)
   document.querySelector('#location').value = event.newUrl;
 }
 

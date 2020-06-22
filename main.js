@@ -23,7 +23,7 @@ app.on('ready', function() {
 	});
 
   mainWindow.loadURL('file://' + __dirname + '/browser.html');
-  // mainWindow.openDevTools();
+  mainWindow.openDevTools();
 })
 
 app.on('window-all-closed', function() {
