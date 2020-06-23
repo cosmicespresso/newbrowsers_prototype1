@@ -34,7 +34,7 @@ body {
   margin: 0 0.5vw;
 }
 
-#back, #forward {
+#back, #forward, #reload {
   margin: 0;
 }
 
@@ -51,6 +51,10 @@ body {
 .controls button:hover {
   cursor: pointer;
   color: rgba(0,0,0,0.5);
+}
+
+#reload {
+  font-size: 12px;
 }
 
 .loading #reload {
